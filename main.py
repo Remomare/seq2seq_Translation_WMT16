@@ -25,7 +25,7 @@ print(random.choice(pairs_output_lang))
 
 hidden_size = 256
 encoder1 = EncoderRNN(input_lang.n_words, hidden_size).to(device_set())
-attn_decoder1 = AttnDecoderRNN(hidden_size, output_lang.n_words, dropout_p=0.1).to(device_set())
+attn_decoder1 = AttnDecoderRNN(hidden_size, output_lang.n_words, pairs_input_lang, 0.1).to(device_set())
 
 
 trainIters(input_lang, output_lang, pairs_input_lang, pairs_output_lang, encoder1, attn_decoder1, 75000, print_every=5000)

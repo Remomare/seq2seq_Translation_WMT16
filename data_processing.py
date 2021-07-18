@@ -82,7 +82,7 @@ def prepareData(lang1, lang2, datasetType, reverse=False):
 
 
 def indexesFromSentence(lang, sentence):
-    return [lang.word2index[word] for word in sentence.split(' ')]
+    return [lang.word2index[word] for word in sentence[0].split(' ')]
 
 
 def tensorFromSentence(lang, sentence):

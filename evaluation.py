@@ -4,12 +4,12 @@ from device_set_torch import device_set
 from data_processing import tensorFromSentence, SOS_token, EOS_token
 
 
-def evaluate(input_lang, output_lang, encoder, decoder, sentence, max_length=len(input)):
+def evaluate(input_lang, output_lang, encoder, decoder, sentence):
     with torch.no_grad():
         input_tensor = tensorFromSentence(input_lang, sentence)
         input_length = input_tensor.size()[0]
         encoder_hidden = encoder.initHidden()
-
+        max_length = len(sentence)
         encoder_outputs = torch.zeros(max_length, encoder.hidden_size, device=device_set())
 
         for ei in range(input_length):

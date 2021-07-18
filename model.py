@@ -41,12 +41,12 @@ class DecoderRNN(nn.Module):
         return torch.zeros(1, 1, self.hidden_size, device=device_set())
 
 class AttnDecoderRNN(nn.Module):
-    def __init__(self, hidden_size, output_size, dropout_p=0.1 ,  max_length= len(input)):
+    def __init__(self, hidden_size, output_size, len_input_sen, dropout_p=0.1 ):
         super(AttnDecoderRNN, self).__init__()
         self.hidden_size = hidden_size
         self.output_size = output_size
         self.dropout_p = dropout_p
-        self.max_length = max_length
+        self.max_length = len(len_input_sen)
 
         self.embedding = nn.Embedding(self.output_size, self.hidden_size)
         self.attn = nn.Linear(self.hidden_size * 2,  self.max_length)

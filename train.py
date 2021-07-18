@@ -13,12 +13,12 @@ from data_processing import SOS_token, EOS_token
 teacher_forcing_ratio = 0.5
 
 
-def train(input_tensor, target_tensor, encoder, decoder, encoder_optimizer, decoder_optimizer, criterion, max_length=len(input)):
+def train(input_tensor, target_tensor, encoder, decoder, encoder_optimizer, decoder_optimizer, criterion, len_input_sen):
     encoder_hidden = encoder.initHidden()
 
     encoder_optimizer.zero_grad()
     decoder_optimizer.zero_grad()
-
+    max_length = len(len_input_sen)
     input_length = input_tensor.size(0)
     target_length = target_tensor.size(0)
 
@@ -97,7 +97,7 @@ def trainIters(input_lang, output_lang, pairs_input_lang, pairs_output_lang, enc
         input_tensor = training_pair[0]
         target_tensor = training_pair[1]
 
-        loss = train(input_tensor, target_tensor, encoder, decoder, encoder_optimizer, decoder_optimizer, criterion)
+        loss = train(input_tensor, target_tensor, encoder, decoder, encoder_optimizer, decoder_optimizer, criterion, pairs_input_lang)
         print_loss_total += loss
         plot_loss_total += loss
 
