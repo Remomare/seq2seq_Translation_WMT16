@@ -36,3 +36,4 @@ evaluateRandomly(input_lang, output_lang, pairs_input_lang_test, pairs_output_la
 
 
 evaluateAndShowAttention(random.choice(pairs_input_lang))
+
