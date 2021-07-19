@@ -49,3 +49,4 @@ def evaluateRandomly(input_lang, output_lang, pairs_input_lang, pairs_output_lan
         output_sentence = ' '.join(output_words)
         print('<', output_sentence)
         print('')
+    return output_sentence

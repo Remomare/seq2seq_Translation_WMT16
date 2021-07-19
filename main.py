@@ -6,6 +6,7 @@ import random
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+from torchtext.data.metrics import bleu_score
 import optimizer_torch as optim
 import criterion_torch as crit
 from device_set_torch import device_set
@@ -14,6 +15,7 @@ from model import *
 from train import trainIters
 from evaluation import evaluateRandomly
 from attn_visualizing import evaluateAndShowAttention
+from BLEU_score import Bleu_score
 
 
 print(device_set())
@@ -37,3 +39,5 @@ evaluateRandomly(input_lang, output_lang, pairs_input_lang_test, pairs_output_la
 
 evaluateAndShowAttention(random.choice(pairs_input_lang))
 
+
+print(Bleu_score(input_lang_test,evaluateAndShowAttention(random.choice(pairs_input_lang))))
